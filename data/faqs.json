@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "category": "hours",
+    "question": "What are your opening hours?",
+    "answer": "We are open Monday to Friday from 8:00 AM to 6:00 PM, and Saturday from 9:00 AM to 2:00 PM. We are closed on Sundays and public holidays."
+  },
+  {
+    "id": 2,
+    "category": "hours",
+    "question": "Do you work on Sundays?",
+    "answer": "No, the workshop is closed on Sundays. For emergencies, we can recommend a local 24-hour towing and roadside service."
+  },
+  {
+    "id": 3,
+    "category": "booking",
+    "question": "Do I need an appointment?",
+    "answer": "Appointments are recommended so we can guarantee your slot, but we also accept walk-ins for quick jobs like tyre checks and oil changes, subject to availability."
+  },
+  {
+    "id": 4,
+    "category": "booking",
+    "question": "How can I book a service?",
+    "answer": "You can book by phone, WhatsApp, or by visiting the workshop. Please have your car make, model, year, and registration number ready."
+  },
+  {
+    "id": 5,
+    "category": "prices",
+    "question": "How much does an oil change cost?",
+    "answer": "A standard oil and filter change costs between 45 and 80 USD depending on the oil type (mineral, semi-synthetic, or fully synthetic) and your engine size."
+  },
+  {
+    "id": 6,
+    "category": "prices",
+    "question": "How much is a full car service?",
+    "answer": "A basic service starts at 120 USD and a full service starts at 220 USD. The final price depends on the car model and parts required."
+  },
+  {
+    "id": 7,
+    "category": "prices",
+    "question": "How much does a brake pad replacement cost?",
+    "answer": "Front brake pad replacement typically costs 90 to 160 USD including labour. Rear pads cost 80 to 140 USD. Discs, if needed, are charged extra."
+  },
+  {
+    "id": 8,
+    "category": "prices",
+    "question": "Do you charge for diagnostics?",
+    "answer": "A computer diagnostic scan costs 30 USD. This fee is deducted from the repair bill if you go ahead with the repair at our workshop."
+  },
+  {
+    "id": 9,
+    "category": "prices",
+    "question": "Do you give a quote before starting work?",
+    "answer": "Yes. We always provide a written estimate before starting any repair, and we will not do extra work without your approval."
+  },
+  {
+    "id": 10,
+    "category": "repairs",
+    "question": "How often should I change my engine oil?",
+    "answer": "Most cars need an oil change every 5,000 to 10,000 km or every 6 to 12 months, whichever comes first. Check your owner's manual for the exact interval."
+  },
+  {
+    "id": 11,
+    "category": "repairs",
+    "question": "Why is my check engine light on?",
+    "answer": "The light can indicate anything from a loose fuel cap to a sensor or engine fault. We run a diagnostic scan to read the error code and identify the exact problem."
+  },
+  {
+    "id": 12,
+    "category": "repairs",
+    "question": "My brakes are squealing. What should I do?",
+    "answer": "Squealing often means worn brake pads. Please have them inspected as soon as possible, because worn pads can damage the discs and reduce stopping power."
+  },
+  {
+    "id": 13,
+    "category": "repairs",
+    "question": "Do you repair car air conditioning?",
+    "answer": "Yes. We handle AC gas refills, leak checks, compressor repairs, and cabin filter replacement. An AC gas refill costs from 50 USD."
+  },
+  {
+    "id": 14,
+    "category": "repairs",
+    "question": "Can you replace my car battery?",
+    "answer": "Yes. We test your battery for free and replace it if needed. New batteries start at 70 USD, fitted, and come with a warranty."
+  },
+  {
+    "id": 15,
+    "category": "repairs",
+    "question": "Do you do tyre rotation and wheel alignment?",
+    "answer": "Yes. Tyre rotation costs 15 USD and wheel alignment costs 35 USD. We recommend alignment if your car pulls to one side or your tyres wear unevenly."
+  },
+  {
+    "id": 16,
+    "category": "policy",
+    "question": "Do you offer a warranty on repairs?",
+    "answer": "Yes. All labour is covered by a 3-month or 5,000 km warranty, and parts carry the manufacturer's warranty."
+  },
+  {
+    "id": 17,
+    "category": "policy",
+    "question": "How long does a typical service take?",
+    "answer": "An oil change takes about 45 minutes, a basic service 2 to 3 hours, and a full service about half a day. Larger repairs may need your car overnight."
+  },
+  {
+    "id": 18,
+    "category": "policy",
+    "question": "Do you use original parts?",
+    "answer": "We offer both genuine (OEM) parts and quality aftermarket parts. We explain the price difference so you can choose what suits your budget."
+  },
+  {
+    "id": 19,
+    "category": "policy",
+    "question": "What payment methods do you accept?",
+    "answer": "We accept cash, debit and credit cards, and bank transfer. Payment is due when you collect your vehicle."
+  },
+  {
+    "id": 20,
+    "category": "policy",
+    "question": "Do you offer a pickup and drop-off service?",
+    "answer": "Yes, within 10 km of the workshop for a 10 USD fee. Please request this when booking."
+  }
+]
