@@ -10,8 +10,7 @@ car-workshop-faq/
 ├── data/
 │   └── faqs.json          # Stores 20 car workshop FAQs
 ├── main.py                # Loads JSON and prints a random FAQ
-├── README.md              # Project documentation
-└── .gitignore             # Specifies files Git should ignore
+└──  README.md              # Project documentation
 
 
 ## Requirements
