@@ -38,7 +38,6 @@ car-workshop-faq/
 │   ├── __init__.py
 │   └── test_answer_engine.py  # Tests for known and unknown questions
 ├── .env                       # Your API key (never committed)
-├── .env.example               # Template for the required variables
 ├── .gitignore
 ├── main.py                    # Command-line chat loop
 ├── requirements.txt
