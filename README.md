@@ -35,7 +35,6 @@ car-workshop-faq/
 │   ├── guardrails.py          # Detects guessing and applies the fallback
 │   └── answer_engine.py       # get_answer(question): calls the AI
 ├── tests/
-│   ├── __init__.py
 │   └── test_answer_engine.py  # Tests for known and unknown questions
 ├── .env                       # Your API key (never committed)
 ├── .gitignore
