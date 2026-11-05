@@ -5,7 +5,7 @@ load_dotenv()
 
 API_KEY = os.getenv("GENAI_API_KEY")
 
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.8-flash"
 
 FALLBACK_MESSAGE = (
     "Sorry, I don't have that information. "
