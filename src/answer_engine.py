@@ -1,4 +1,3 @@
-
 from google import genai
 
 from src.config import API_KEY, MODEL, FALLBACK_MESSAGE
@@ -31,7 +30,7 @@ def get_answer(question: str) -> str:
         if not response.text:
             return FALLBACK_MESSAGE
 
-        return apply_guardrail(response.text)
+        return apply_guardrail(response.text, FAQS)
 
     except Exception as e:
         print(f"Gemini API Error: {e}")
