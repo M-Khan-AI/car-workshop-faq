@@ -14,3 +14,10 @@ def load_faqs():
         raise FileNotFoundError(
             f"FAQ file not found: {DATA_FILE}"
         )
+
+if __name__ == "__main__":
+    faqs = load_faqs()
+
+    print("FAQ loaded successfully")
+    print("Total FAQs:", len(faqs))
+    print("First FAQ:", faqs[0])
