@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Car Workshop Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>🚗 Car Workshop Assistant</h1>
+      <p class="subtitle">Ask about prices, opening hours, repairs, and bookings.</p>
+    </header>
+
+    <section id="chat" class="chat" aria-live="polite">
+      <div class="message bot">Hello! How can I help you with your car today?</div>
+    </section>
+
+    <div class="suggestions">
+      <button type="button" class="chip">What are your opening hours?</button>
+      <button type="button" class="chip">How much is an oil change?</button>
+      <button type="button" class="chip">Do you offer a warranty?</button>
+    </div>
+
+    <form id="ask-form" class="ask-form" autocomplete="off">
+      <label for="question" class="visually-hidden">Your question</label>
+      <input
+        type="text"
+        id="question"
+        name="question"
+        placeholder="Type your question..."
+        maxlength="300"
+        required
+      >
+      <button type="submit" id="send-btn">Ask</button>
+    </form>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
