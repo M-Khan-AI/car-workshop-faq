@@ -91,7 +91,8 @@ cp .env.example .env        # macOS / Linux
 Then edit `.env`:
 
 ```
-OPENAI_API_KEY=your_key_here
+GROQ_API_KEY=your_key_here
+GROQ_MODEL=openai/gpt-oss-120b
 ```
 
 > **Never commit `.env`.** It is already listed in `.gitignore`.
@@ -151,7 +152,7 @@ Settings live in `src/config.py`:
 
 | Setting | Description |
 |---|---|
-| `MODEL` | AI model name (change it to match your provider) |
+| `GROQ_MODEL` | Groq model ID (defaults to `openai/gpt-oss-120b`) |
 | `FALLBACK_MESSAGE` | Message shown when the answer is unknown |
 | `NOT_FOUND_TOKEN` | Keyword the AI returns when it cannot answer |
 

@@ -1,10 +1,9 @@
 
-from google import genai
+from groq import Groq
 
-from src.config import API_KEY, MODEL, FALLBACK_MESSAGE
+from src.config import API_KEY, MODEL, FALLBACK_MESSAGE, NOT_FOUND_TOKEN
 from src.data_loader import load_faqs
 from src.prompt_builder import build_system_prompt
-from src.guardrails import apply_guardrail
 
 
 FAQS = load_faqs()
@@ -17,7 +16,7 @@ def get_client():
     global client
 
     if client is None:
-        client = genai.Client(api_key=API_KEY)
+        client = Groq(api_key=API_KEY)
 
     return client
 
@@ -28,22 +27,36 @@ def get_answer(question: str) -> str:
         return FALLBACK_MESSAGE
 
     try:
-        gemini_client = get_client()
+        groq_client = get_client()
 
-        response = gemini_client.models.generate_content(
+        response = groq_client.chat.completions.create(
             model=MODEL,
-            contents=question,
-            config={
-                "system_instruction": SYSTEM_PROMPT,
-                "temperature": 0,
-            },
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": question},
+            ],
+            temperature=0,
+            max_tokens=512,
         )
 
-        if not response.text:
+        selection = response.choices[0].message.content
+        if not selection or selection.strip() == NOT_FOUND_TOKEN:
             return FALLBACK_MESSAGE
 
-        return apply_guardrail(response.text, FAQS)
+        try:
+            selected_id = int(selection.strip())
+        except ValueError:
+            return FALLBACK_MESSAGE
+
+        selected_faq = next(
+            (faq for faq in FAQS if faq.get("id") == selected_id),
+            None,
+        )
+        if selected_faq is None:
+            return FALLBACK_MESSAGE
+
+        return selected_faq["answer"]
 
     except Exception as e:
-        print(f"Gemini API Error: {e}")
+        print(f"Groq API Error: {e}")
         return FALLBACK_MESSAGE

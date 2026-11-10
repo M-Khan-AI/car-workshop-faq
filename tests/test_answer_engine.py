@@ -8,16 +8,18 @@ from src.guardrails import is_guess, apply_guardrail
 
 
 def fake_response(text):
-    """Create a simulated Gemini response."""
-    return SimpleNamespace(text=text)
+    """Create a simulated Groq chat-completion response."""
+    message = SimpleNamespace(content=text)
+    return SimpleNamespace(choices=[SimpleNamespace(message=message)])
 
 
 def mock_client(monkeypatch, generate_content):
-    models = SimpleNamespace(generate_content=generate_content)
+    completions = SimpleNamespace(create=generate_content)
+    chat = SimpleNamespace(completions=completions)
     monkeypatch.setattr(
         answer_engine,
         "get_client",
-        lambda: SimpleNamespace(models=models),
+        lambda: SimpleNamespace(chat=chat),
     )
 
 
@@ -25,11 +27,23 @@ def test_known_question_hours(monkeypatch):
     expected_answer = answer_engine.FAQS[0]["answer"]
 
     def mock_generate_content(**kwargs):
-        return fake_response(expected_answer)
+        return fake_response(str(answer_engine.FAQS[0]["id"]))
 
     mock_client(monkeypatch, mock_generate_content)
 
     result = answer_engine.get_answer("What time do you open?")
+
+    assert result == expected_answer
+
+
+def test_oil_change_question_returns_canonical_answer(monkeypatch):
+    expected_answer = answer_engine.FAQS[4]["answer"]
+    monkeypatch_generate = lambda **kwargs: fake_response(
+        str(answer_engine.FAQS[4]["id"])
+    )
+    mock_client(monkeypatch, monkeypatch_generate)
+
+    result = answer_engine.get_answer("How much is an oil change?")
 
     assert result == expected_answer
 
@@ -46,7 +60,7 @@ def test_unknown_question_returns_fallback(monkeypatch):
     assert result == FALLBACK_MESSAGE
 
 
-def test_unsupported_answer_returns_fallback(monkeypatch):
+def test_unverified_model_response_returns_fallback(monkeypatch):
 
     def mock_generate_content(**kwargs):
         return fake_response("We provide free Ferrari repairs.")
@@ -58,6 +72,17 @@ def test_unsupported_answer_returns_fallback(monkeypatch):
     assert result == FALLBACK_MESSAGE
 
 
+def test_unknown_faq_id_returns_fallback(monkeypatch):
+    def mock_generate_content(**kwargs):
+        return fake_response("999")
+
+    mock_client(monkeypatch, mock_generate_content)
+
+    result = answer_engine.get_answer("What are your opening hours?")
+
+    assert result == FALLBACK_MESSAGE
+
+
 def test_empty_question():
     assert answer_engine.get_answer("   ") == FALLBACK_MESSAGE
 
@@ -65,7 +90,7 @@ def test_empty_question():
 def test_api_timeout_returns_fallback(monkeypatch):
 
     def mock_generate_content(**kwargs):
-        raise TimeoutError("Gemini API request timed out")
+        raise TimeoutError("Groq API request timed out")
 
     mock_client(monkeypatch, mock_generate_content)
 
