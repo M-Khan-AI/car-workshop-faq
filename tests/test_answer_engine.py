@@ -12,17 +12,22 @@ def fake_response(text):
     return SimpleNamespace(text=text)
 
 
+def mock_client(monkeypatch, generate_content):
+    models = SimpleNamespace(generate_content=generate_content)
+    monkeypatch.setattr(
+        answer_engine,
+        "get_client",
+        lambda: SimpleNamespace(models=models),
+    )
+
+
 def test_known_question_hours(monkeypatch):
     expected_answer = answer_engine.FAQS[0]["answer"]
 
     def mock_generate_content(**kwargs):
         return fake_response(expected_answer)
 
-    monkeypatch.setattr(
-        answer_engine.client.models,
-        "generate_content",
-        mock_generate_content,
-    )
+    mock_client(monkeypatch, mock_generate_content)
 
     result = answer_engine.get_answer("What time do you open?")
 
@@ -34,11 +39,7 @@ def test_unknown_question_returns_fallback(monkeypatch):
     def mock_generate_content(**kwargs):
         return fake_response("NOT_IN_FAQ")
 
-    monkeypatch.setattr(
-        answer_engine.client.models,
-        "generate_content",
-        mock_generate_content,
-    )
+    mock_client(monkeypatch, mock_generate_content)
 
     result = answer_engine.get_answer("What is the capital of France?")
 
@@ -50,11 +51,7 @@ def test_unsupported_answer_returns_fallback(monkeypatch):
     def mock_generate_content(**kwargs):
         return fake_response("We provide free Ferrari repairs.")
 
-    monkeypatch.setattr(
-        answer_engine.client.models,
-        "generate_content",
-        mock_generate_content,
-    )
+    mock_client(monkeypatch, mock_generate_content)
 
     result = answer_engine.get_answer("Do you repair Ferrari cars?")
 
@@ -70,11 +67,7 @@ def test_api_timeout_returns_fallback(monkeypatch):
     def mock_generate_content(**kwargs):
         raise TimeoutError("Gemini API request timed out")
 
-    monkeypatch.setattr(
-        answer_engine.client.models,
-        "generate_content",
-        mock_generate_content,
-    )
+    mock_client(monkeypatch, mock_generate_content)
 
     result = answer_engine.get_answer("What are your opening hours?")
 
