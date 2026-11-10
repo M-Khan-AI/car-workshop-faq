@@ -1,3 +1,4 @@
+
 from google import genai
 
 from src.config import API_KEY, MODEL, FALLBACK_MESSAGE
@@ -6,10 +7,19 @@ from src.prompt_builder import build_system_prompt
 from src.guardrails import apply_guardrail
 
 
-client = genai.Client(api_key=API_KEY)
-
 FAQS = load_faqs()
 SYSTEM_PROMPT = build_system_prompt(FAQS)
+
+client = None
+
+
+def get_client():
+    global client
+
+    if client is None:
+        client = genai.Client(api_key=API_KEY)
+
+    return client
 
 
 def get_answer(question: str) -> str:
@@ -18,7 +28,9 @@ def get_answer(question: str) -> str:
         return FALLBACK_MESSAGE
 
     try:
-        response = client.models.generate_content(
+        gemini_client = get_client()
+
+        response = gemini_client.models.generate_content(
             model=MODEL,
             contents=question,
             config={

@@ -1,3 +1,4 @@
+
 import os
 from dotenv import load_dotenv
 
@@ -5,7 +6,7 @@ load_dotenv()
 
 API_KEY = os.getenv("GENAI_API_KEY")
 
-MODEL = "gemini-3.8-flash"
+MODEL = "gemini-2.5-flash"
 
 FALLBACK_MESSAGE = (
     "Sorry, I don't have that information. "
@@ -13,3 +14,8 @@ FALLBACK_MESSAGE = (
 )
 
 NOT_FOUND_TOKEN = "NOT_IN_FAQ"
+
+if not API_KEY:
+    raise RuntimeError(
+        "GENAI_API_KEY environment variable is missing."
+    )
