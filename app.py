@@ -1,5 +1,5 @@
 """Flask web app: a simple page where customers ask the workshop assistant."""
-
+import os
 from flask import Flask, jsonify, render_template, request
 
 from src.answer_engine import get_answer
@@ -33,4 +33,8 @@ def ask():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 8080)),
+        debug=False
+    )
