@@ -11,6 +11,19 @@
 
   let busy = false;
 
+  function addCarIcon(container, className) {
+    const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    icon.setAttribute("class", className);
+    icon.setAttribute("viewBox", "0 0 24 24");
+    icon.setAttribute("aria-hidden", "true");
+    icon.setAttribute("focusable", "false");
+
+    const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    use.setAttribute("href", "#icon-car-front");
+    icon.appendChild(use);
+    container.appendChild(icon);
+  }
+
   function timeNow() {
     return new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
   }
@@ -33,8 +46,9 @@
 
     if (type.startsWith("bot")) {
       const avatar = document.createElement("span");
-      avatar.className = "avatar car-emoji";
+      avatar.className = "avatar";
       avatar.setAttribute("aria-hidden", "true");
+      addCarIcon(avatar, "avatar-icon");
       row.appendChild(avatar);
     }
 
@@ -62,8 +76,9 @@
     row.setAttribute("aria-label", "Assistant is typing");
 
     const avatar = document.createElement("span");
-    avatar.className = "avatar car-emoji";
+    avatar.className = "avatar";
     avatar.setAttribute("aria-hidden", "true");
+    addCarIcon(avatar, "avatar-icon");
 
     const bubble = document.createElement("div");
     bubble.className = "bubble";
@@ -93,7 +108,7 @@
 
   function showWelcome() {
     addMessage(
-      "Hello! 👋 I'm the workshop assistant. Ask me about prices, opening hours, repairs, or bookings, or pick a topic below.",
+      "Hello! I'm the workshop assistant. Ask me about prices, opening hours, repairs, or bookings, or pick a topic below.",
       "bot"
     );
   }

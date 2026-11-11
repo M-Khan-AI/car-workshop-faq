@@ -13,11 +13,40 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+  <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="icon-car-front" viewBox="0 0 24 24">
+      <path d="m5 11 1.5-5h11L19 11M3 11h18v7H3zM6 18v2m12-2v2M6 14h.01M18 14h.01M8 11l1-3h6l1 3"/>
+    </symbol>
+    <symbol id="icon-clock-3" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 6v6l4 2"/>
+    </symbol>
+    <symbol id="icon-circle-dollar-sign" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8m4 2V6"/>
+    </symbol>
+    <symbol id="icon-disc-3" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"/>
+      <circle cx="12" cy="12" r="2"/>
+      <path d="m16.24 7.76-2.12 2.12M7.76 16.24l2.12-2.12"/>
+    </symbol>
+    <symbol id="icon-calendar-days" viewBox="0 0 24 24">
+      <rect x="3" y="4" width="18" height="18" rx="2"/>
+      <path d="M16 2v4M8 2v4M3 10h18"/>
+      <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/>
+    </symbol>
+    <symbol id="icon-shield-check" viewBox="0 0 24 24">
+      <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/>
+      <path d="m9 12 2 2 4-4"/>
+    </symbol>
+  </svg>
   <div class="app">
 
     <header class="app-header">
       <div class="brand">
-        <span class="logo car-emoji" aria-hidden="true"></span>
+        <span class="logo" aria-hidden="true">
+          <svg class="logo-icon" viewBox="0 0 24 24"><use href="#icon-car-front"></use></svg>
+        </span>
         <div class="brand-text">
           <h1>Car Workshop Assistant</h1>
           <p class="status"><span class="status-dot"></span>Online &middot; Instant answers from our FAQ</p>
@@ -37,11 +66,26 @@
     </div>
 
     <nav class="topics" aria-label="Popular questions">
-      <button type="button" class="chip" data-question="What are your opening hours?">🕒 Opening hours</button>
-      <button type="button" class="chip" data-question="How much does an oil change cost?">💰 Oil change price</button>
-      <button type="button" class="chip" data-question="How much does a brake pad replacement cost?">🛞 Brake pads</button>
-      <button type="button" class="chip" data-question="How can I book a service?">📅 Book a service</button>
-      <button type="button" class="chip" data-question="Do you offer a warranty on repairs?">🛡️ Warranty</button>
+      <button type="button" class="chip" data-question="What are your opening hours?">
+        <svg class="chip-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-clock-3"></use></svg>
+        <span>Opening hours</span>
+      </button>
+      <button type="button" class="chip" data-question="How much does an oil change cost?">
+        <svg class="chip-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-circle-dollar-sign"></use></svg>
+        <span>Oil change price</span>
+      </button>
+      <button type="button" class="chip" data-question="How much does a brake pad replacement cost?">
+        <svg class="chip-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-disc-3"></use></svg>
+        <span>Brake pads</span>
+      </button>
+      <button type="button" class="chip" data-question="How can I book a service?">
+        <svg class="chip-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-calendar-days"></use></svg>
+        <span>Book a service</span>
+      </button>
+      <button type="button" class="chip" data-question="Do you offer a warranty on repairs?">
+        <svg class="chip-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shield-check"></use></svg>
+        <span>Warranty</span>
+      </button>
     </nav>
 
     <form id="ask-form" class="ask-form" autocomplete="off">

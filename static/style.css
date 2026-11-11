@@ -123,11 +123,28 @@ body {
   flex-shrink: 0;
   display: grid;
   place-items: center;
-  font-size: 26px;
   border-radius: 16px;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.08));
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.logo-icon {
+  width: 27px;
+  height: 27px;
+  color: #ffffff;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 .brand-text {
@@ -197,13 +214,6 @@ h1 {
   transform: translateY(-1px);
 }
 
-/* ---------- Car emoji class (reusable) ---------- */
-.car-emoji::before {
-  content: "\1F699";
-  line-height: 1;
-  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-}
-
 /* ---------- Chat area and watermark ---------- */
 .chat-area {
   position: relative;
@@ -264,11 +274,20 @@ h1 {
   flex-shrink: 0;
   display: grid;
   place-items: center;
-  font-size: 18px;
   border-radius: 50%;
   background: linear-gradient(145deg, var(--primary-soft), var(--card));
   border: 1px solid var(--border);
   box-shadow: var(--bubble-shadow);
+}
+
+.avatar-icon {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .content {
@@ -367,6 +386,9 @@ h1 {
 }
 
 .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   flex-shrink: 0;
   padding: 9px 16px;
   font-family: inherit;
@@ -380,6 +402,17 @@ h1 {
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.chip-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .chip:hover:not(:disabled) {
