@@ -11,7 +11,7 @@
 
   let busy = false;
 
-  function addCarIcon(container, className) {
+  function addRobotIcon(container, className) {
     const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     icon.setAttribute("class", className);
     icon.setAttribute("viewBox", "0 0 24 24");
@@ -19,7 +19,7 @@
     icon.setAttribute("focusable", "false");
 
     const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    use.setAttribute("href", "#icon-car-front");
+    use.setAttribute("href", "#icon-bot");
     icon.appendChild(use);
     container.appendChild(icon);
   }
@@ -48,7 +48,7 @@
       const avatar = document.createElement("span");
       avatar.className = "avatar";
       avatar.setAttribute("aria-hidden", "true");
-      addCarIcon(avatar, "avatar-icon");
+      addRobotIcon(avatar, "avatar-icon");
       row.appendChild(avatar);
     }
 
@@ -78,7 +78,7 @@
     const avatar = document.createElement("span");
     avatar.className = "avatar";
     avatar.setAttribute("aria-hidden", "true");
-    addCarIcon(avatar, "avatar-icon");
+    addRobotIcon(avatar, "avatar-icon");
 
     const bubble = document.createElement("div");
     bubble.className = "bubble";
